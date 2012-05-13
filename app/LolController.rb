@@ -18,6 +18,20 @@ class LolController < UIViewController
     loadNextLol
   end
 
+  def canBecomeFirstResponder
+    true
+  end
+    
+  def viewDidAppear(animated)
+    becomeFirstResponder
+  end
+
+  def motionEnded(motion, withEvent:event)
+    if event.subtype == UIEventSubtypeMotionShake
+      loadNextLol
+    end
+  end
+
   def loadNextLol
     puts("loadNextLol")
     @activityIndicator.startAnimating
@@ -76,5 +90,5 @@ class LolController < UIViewController
   def shouldAutorotateToInterfaceOrientation(interfaceOrientation)
     true
   end
-  
+
 end
