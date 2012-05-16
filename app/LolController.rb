@@ -59,7 +59,7 @@ class LolController < UIViewController
     page = NSString.alloc.initWithBytes(@receivedData.bytes, length:@receivedData.length, encoding:NSUTF8StringEncoding)
     lolUrl = scrapeLolImage(page)
     if lolUrl.nil?
-      puts("Scraping failed, loading next lol...")
+      puts("Loading failed, loading next lol...")
       loadNextLol
     else
       self.view.image = UIImage.imageWithData(NSData.dataWithContentsOfURL(NSURL.URLWithString(lolUrl)))
